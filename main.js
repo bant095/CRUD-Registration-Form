@@ -27,16 +27,16 @@ const fetchUserDetails = () => {
     .map(
       (user) =>
         `<div class="border rounded-lg p-3 my-2">
-              <p><strong>Username:</strong> ${user.username}</p>
-              <p><strong>Full Name:</strong> ${user.fullName}</p>
-              <p><strong>Email:</strong> ${user.email}</p>
-              <p><strong>Address:</strong> ${user.address}</p>
-              <p><strong>Zip Code:</strong> ${user.zipCode}</p>
-              <p><strong>Phone Number:</strong> ${user.phoneNumber}</p>
-              <p><strong>Gender:</strong> ${user.gender}</p>
-              <button onclick="editUser('${user.id}')" class="bg-blue-500 text-white px-3 py-1 rounded-md mt-2">Edit</button>
-              <button onclick="deleteUser('${user.id}')" class="bg-red-500 text-white px-3 py-1 rounded-md mt-2">Delete</button>
-            </div>`
+            <p><strong>Username:</strong> ${user.username}</p>
+            <p><strong>Full Name:</strong> ${user.fullName}</p>
+            <p><strong>Email:</strong> ${user.email}</p>
+            <p><strong>Address:</strong> ${user.address}</p>
+            <p><strong>Zip Code:</strong> ${user.zipCode}</p>
+            <p><strong>Phone Number:</strong> ${user.phoneNumber}</p>
+            <p><strong>Gender:</strong> ${user.gender}</p>
+            <button onclick="editUser('${user.id}')" class="bg-blue-500 text-white px-3 py-1 rounded-md mt-2">Edit</button>
+            <button onclick="deleteUser('${user.id}')" class="bg-red-500 text-white px-3 py-1 rounded-md mt-2">Delete</button>
+          </div>`
     )
     .join('');
 };
@@ -159,23 +159,34 @@ const updateUser = () => {
 };
 
 // Delete - Function to Delete a User
+
 const deleteUser = (id) => {
-  // Use a confirmation library or a built-in JavaScript confirmation box for better user experience
-  const confirmDelete = confirm('Are you sure you want to delete this user?');
+  Swal.fire({
+    title: 'Delete Form',
+    text: 'Are you sure you want to delete this user?',
+    icon: 'warning',
+    confirmButtonText: 'Yes!',
+    showCancelButton: true,
+  }).then((res) => {
+    console.log(res.confirmDelete);
+    //to confirm the cancel btn
 
-  if (confirmDelete) {
-    let user_db = JSON.parse(localStorage.getItem('user_db')) || [];
+    if (res.confirmDelete) {
+      const user_db = JSON.parse(localStorage.getItem('user_db')) || [];
 
-    // Filter out the user to be deleted
-    user_db = user_db.filter((user) => user.id !== id);
+      // Filter out the user to be deleted
+      const new_user_db = user_db.filter((user) => user.id !== id);
 
-    // Save the updated user details in local storage
-    localStorage.setItem('user_db', JSON.stringify(user_db));
+      // Save the updated user details in local storage
+      localStorage.setItem('user_db', JSON.stringify(new_user_db));
 
-    // Fetch and display the updated user details
-    fetchUserDetails();
-  }
+      // Fetch and display the updated user details
+      fetchUserDetails();
+    } else {
+      return;
+    }
+  });
 };
 
-// Call the fetchUserDetails function to display any existing user details on page load
+// Call the fetchUserDetails
 fetchUserDetails();
