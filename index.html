@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <title>CRUD Registration Form | TIIDELab</title>
+  </head>
+  <body class="p-5">
+    <header class="px-5 py-4 bg-blue-500 max-w-lg mx-auto">
+      <h1 class="text-4xl text-white text-center font-medium">
+        Registration Form
+      </h1>
+    </header>
+
+    <main class="p-5 mt-5 max-w-lg mx-auto bg-blue-300 shadow-lg">
+      <form class="flex flex-col gap-2" id="user-details-form">
+        <input
+          type="text"
+          placeholder="Username"
+          class="p-2 rounded-lg border border-slate-100 outline-none"
+          id="username"
+          required
+        />
+        <input
+          type="text"
+          placeholder="Full Name"
+          class="p-2 rounded-lg border border-slate-100 outline-none"
+          id="full-name"
+          required
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          class="p-2 rounded-lg border border-slate-100 outline-none"
+          id="password"
+          required
+        />
+        <input
+          type="email"
+          placeholder="Email Address"
+          class="p-2 rounded-lg border border-slate-100 outline-none"
+          id="email"
+          required
+        />
+        <input
+          type="text"
+          placeholder="Address"
+          class="p-2 rounded-lg border border-slate-100 outline-none"
+          id="address"
+          required
+        />
+        <input
+          type="text"
+          placeholder="Zip Code"
+          class="p-2 rounded-lg border border-slate-100 outline-none"
+          id="zip-code"
+          required
+        />
+        <input
+          type="tel"
+          placeholder="Phone Number"
+          class="p-2 rounded-lg border border-slate-100 outline-none"
+          id="phone-number"
+          required
+        />
+        <select
+          id="gender"
+          class="p-2 rounded-lg border border-slate-100 outline-none"
+          required
+        >
+          <option value="male">Gender</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+          <option value="other">Other</option>
+        </select>
+        <button
+          class="bg-blue-700 rounded-lg px-4 py-2 text-sm text-white mt-3"
+          onclick="saveUserDetails()"
+          type="button"
+        >
+          Submit
+        </button>
+      </form>
+      <span class="hidden" id="form-message"></span>
+
+      <!-- Section for displaying user inputs -->
+      <section class="mt-5" id="user-details-container"></section>
+    </main>
+
+    <script src="main.js"></script>
+  </body>
+</html>
