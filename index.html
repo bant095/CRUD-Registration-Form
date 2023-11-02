@@ -12,12 +12,13 @@
     <title>CRUD Registration Form | TIIDELab</title>
   </head>
   <body class="p-5">
+    <!-- Header -->
     <header class="px-5 py-4 bg-blue-500 max-w-lg mx-auto">
       <h1 class="text-4xl text-white text-center font-medium">
         CRUD Registration Form
       </h1>
     </header>
-
+    <!-- Main part of the form -->
     <main class="p-5 mt-5 max-w-lg mx-auto bg-blue-300 shadow-lg">
       <form class="flex flex-col gap-2" id="user-details-form">
         <input
@@ -83,13 +84,20 @@
           class="bg-blue-700 rounded-lg px-4 py-2 text-sm text-white mt-3"
           onclick="saveUserDetails()"
           type="button"
+          id="add_Users_btn"
         >
           Submit
         </button>
+        <button
+          class="bg-blue-700 rounded-lg px-4 py-2 text-sm text-white mt-3 hidden"
+          onclick="updateUser()"
+          type="button"
+          id="Update_Users_btn"
+        >
+          Update
+        </button>
       </form>
-      <span class="hidden" id="form-message"></span>
 
-      <!-- Section for displaying user inputs -->
       <section class="mt-5" id="user-details-container"></section>
     </main>
 
