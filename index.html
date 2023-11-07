@@ -3,104 +3,45 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-    />
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <title>CRUD Registration Form | TIIDELab</title>
+    <title>TODO NEW CRUD TIIDELab</title>
   </head>
-  <body class="p-5">
-    <!-- Header -->
-    <header class="px-5 py-4 bg-blue-500 max-w-lg mx-auto">
-      <h1 class="text-4xl text-white text-center font-medium">
-        CRUD Registration Form
-      </h1>
+  <body class="bg-green-100">
+    <header class="mt-10 p-4 max-w-lg mx-auto bg-green-500 text-white">
+      <h2 class="text-center text-3xl">
+        <span class="text-white font-bold">FRED</span> TODO
+      </h2>
     </header>
-    <!-- Main part of the form -->
-    <main class="p-5 mt-5 max-w-lg mx-auto bg-blue-300 shadow-lg">
-      <form class="flex flex-col gap-2" id="user-details-form">
+    <main class="bg-white shadow-lg max-w-lg mx-auto p-2">
+      <form class="flex flex-col sm:flex-row justify-between">
         <input
           type="text"
-          placeholder="Username"
-          class="p-2 rounded-lg border border-slate-100 outline-none"
-          id="username"
-          required
+          name="user-input"
+          placeholder="What are you doing today?"
+          class="outline-none border py-2 px-4 m-2 sm:w-[80%] rounded-md"
+          id="todo_input"
         />
-        <input
-          type="text"
-          placeholder="Full Name"
-          class="p-2 rounded-lg border border-slate-100 outline-none"
-          id="full-name"
-          required
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          class="p-2 rounded-lg border border-slate-100 outline-none"
-          id="password"
-          required
-        />
-        <input
-          type="email"
-          placeholder="Email Address"
-          class="p-2 rounded-lg border border-slate-100 outline-none"
-          id="email"
-          required
-        />
-        <input
-          type="text"
-          placeholder="Address"
-          class="p-2 rounded-lg border border-slate-100 outline-none"
-          id="address"
-          required
-        />
-        <input
-          type="text"
-          placeholder="Zip Code"
-          class="p-2 rounded-lg border border-slate-100 outline-none"
-          id="zip-code"
-          required
-        />
-        <input
-          type="tel"
-          placeholder="Phone Number"
-          class="p-2 rounded-lg border border-slate-100 outline-none"
-          id="phone-number"
-          required
-        />
-        <select
-          id="gender"
-          class="p-2 rounded-lg border border-slate-100 outline-none"
-          required
-        >
-          <option value="male">Gender</option>
-          <option value="male">Male</option>
-          <option value="female">Female</option>
-          <option value="other">Other</option>
-        </select>
         <button
-          class="bg-blue-700 rounded-lg px-4 py-2 text-sm text-white mt-3"
-          onclick="saveUserDetails()"
-          type="button"
-          id="add_Users_btn"
+          onclick="create_Todo(event)"
+          class="bg-green-500 text-white py-2 px-4 rounded-md m-2"
+          id="add_todo_btn"
         >
-          Submit
+          Add&nbsp;Task
         </button>
         <button
-          class="bg-blue-700 rounded-lg px-4 py-2 text-sm text-white mt-3 hidden"
-          onclick="updateUser()"
-          type="button"
-          id="Update_Users_btn"
+          onclick="updateTodo(event)"
+          class="hidden bg-grey text-white py-2 px-4 rounded-md m-2"
+          id="update_todo_btn"
         >
-          Update
+          Update&nbsp;Task
         </button>
       </form>
-
-      <section class="mt-5" id="user-details-container"></section>
+      <span id="form_message" class="hidden block text-left p-2"></span>
+      <div id="task_log" class="bg-green-50 rounded-md p-2"></div>
     </main>
 
-    <script src="main.js"></script>
+    <script src="utility.js"></script>
+    <script src="index.js"></script>
   </body>
 </html>
